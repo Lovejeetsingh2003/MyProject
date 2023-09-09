@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">ChatterCamp Application</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Login">Login</string>
+    <string name="etUsername">Enter Username</string>
+    <string name="etPassword">Enter Password</string>
+    <string name="tvForget">Forget Password?</string>
+    <string name="btnLogin">Login</string>
+    <string name="tvReg">Register</string>
+    <string name="tvCreate">Create an Account</string>
+    <string name="etName">Enter Name</string>
+    <string name="etEnterEmail">Enter Email</string>
+    <string name="etConfirmPassword">Confirm Password</string>
+    <string name="btnCreate">Create an Account</string>
+    <string name="tvForgetPassword">Forget Password</string>
+    <string name="btnForget">Forget</string>
+    <string name="tvGoogle">Sign Up With Google</string>
+    <string name="tvHome">Home</string>
+    <string name="tvSearch">Search</string>
+    <string name="tvMessage">Message</string>
+    <string name="tvProfile">My Profile</string>
+    <string name="tvName">Name</string>
+    <string name="tvEmail">Email</string>
+    <string name="tvEdit">Edit Profile</string>
+    <string name="tvRateUS">Rate Us</string>
+    <string name="etAge">Enter Age</string>
+    <string name="etProfession">Enter Profession</string>
+    <string name="etQualification">Enter Highest Qualification</string>
+    <string name="tvGender">Gender : </string>
+    <string name="tvTask">Your task for the day</string>
+    <string name="tvEventName">Event Name</string>
+    <string name="btnOtp">Send OTP</string>
+    <string name="Star">*</string>
+    <string name="tvRateUs">Rate Us</string>
+    <string name="etMessage">Message</string>
+    <string name="tvLogOut">LogOut</string>
+    <string name="tvAddTrainers">Add Trainers</string>
+    <string-array name="Gender">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tvNotifications">Notifications</string>
+    <string name="tvAgenda">Agenda Of The Day</string>
+    <string name="tvWorkshops">Workshop Lists</string>
+    <string name="tvAgendaText">Embark on a Journey of Creative Exploration</string>
+    <string name="tvWorkshopName">Water Fun</string>
+    <string name="tvWorkshopSubject">Swimming</string>
+    <string name="tvWrkName">Workshop Name :</string>
+    <string name="tvWrkshopName">Name</string>
+    <string name="tvSubject">Subject :</string>
+    <string name="tvSub">subject</string>
+    <string name="tvTiming">Timing :</string>
+    <string name="tvStartTime">🕑</string>
+    <string name="tvStartDate">📆</string>
+    <string name="tvDate2">Date:</string>
+    <string name="tvEvent">Workshop Details</string>
+    <string name="rbStudent">Student</string>
+    <string name="rbTrainer">Trainer</string>
+    <string name="tvDescription">Workshop Description</string>
+    <string name="tvDesc">Write Here Description</string>
+    <string name="btnTrainer">Add \nTrainer</string>
+    <string name="btnParticipantList">Add \nParticipant</string>
+    <string name="tvAddWorkshop">Add Workshop</string>
+    <string name="tvTittle">Workshop Details</string>
+    <string name="btnSaveWorkshop">Save Workshop</string>
+    <string name="tvTo">To</string>
+    <string name="tvDate">📆</string>
+    <string name="tvDob">D.O.B :</string>
+</resources>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginTop="5dp"
+    app:strokeColor="@color/black"
+    app:strokeWidth="2dp"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clWorkshop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvWorkshopName"
+            android:text="@string/tvWorkshopName"
+            android:gravity="center"
+            android:layout_marginVertical="5dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvWorkshopSubject"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="15sp"  />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background= "@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="25dp"
+            app:layout_constraintTop_toBottomOf="@id/tvWorkshopName"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvWorkshopSubject"
+            android:text="@string/tvWorkshopSubject"
+            android:gravity="center"
+            android:layout_marginVertical="5dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWorkshopName"
+            android:textSize="15sp"  />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background= "@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="25dp"
+            app:layout_constraintTop_toBottomOf="@id/tvWorkshopSubject"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

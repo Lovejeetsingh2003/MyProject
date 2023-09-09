@@ -1,0 +1,100 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg"
+    tools:context="com.ChatterCampApplication.Fragment.HomeFragment">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/clAgenda"
+       android:background="@drawable/square"
+       android:backgroundTint="@color/white"
+       android:layout_marginTop="20dp">
+
+       <TextView
+           android:id="@+id/tvAgenda"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/tvAgenda"
+           android:fontFamily="sans-serif-black"
+           android:textColor="@color/black"
+           android:textSize="25sp"
+           android:layout_marginTop="10dp"
+           android:gravity="center"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />
+
+       <ScrollView
+           android:layout_width="match_parent"
+           android:layout_height="70dp"
+           app:layout_constraintTop_toBottomOf="@id/tvAgenda"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintBottom_toBottomOf="parent">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:gravity="center"
+               android:id="@+id/clAgendaText">
+
+               <TextView
+                   android:id="@+id/tvAgendaText"
+                   android:layout_width="match_parent"
+                   android:layout_height="71dp"
+                   android:gravity="center"
+                   android:text="@string/tvAgendaText"
+                   android:textColor="@color/red"
+                   android:textSize="17sp"
+                   android:textStyle="italic" />
+           </LinearLayout>
+       </ScrollView>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clWorkshops"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/grey_300"
+        android:layout_weight="2"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/tvWorkshops"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@string/tvWorkshops"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress"
+            app:layout_constraintTop_toBottomOf="@id/tvWorkshops"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWorkshopList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWorkshops" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
