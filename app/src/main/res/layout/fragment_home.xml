@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,11 +10,48 @@
     android:background="@drawable/bg"
     tools:context="com.ChatterCampApplication.Fragment.HomeFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/square"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/clAgenda">
+
+        <Spinner
+            android:id="@+id/spinnerDay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/day"
+            android:padding="15dp"
+            style="@style/spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnShow"/>
+
+        <Button
+            android:id="@+id/btnShow"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/blue_10"
+            android:text="@string/btnShow"
+            android:padding="8dp"
+            android:layout_marginEnd="4dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
    <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:id="@+id/clAgenda"
-       android:background="@drawable/square"
+       android:background="@drawable/squareborder"
        android:backgroundTint="@color/white"
        android:layout_marginTop="20dp">
 
@@ -23,7 +61,7 @@
            android:layout_height="wrap_content"
            android:text="@string/tvAgenda"
            android:fontFamily="sans-serif-black"
-           android:textColor="@color/black"
+           android:textColor="@color/blue"
            android:textSize="25sp"
            android:layout_marginTop="10dp"
            android:gravity="center"
@@ -50,7 +88,7 @@
                    android:layout_height="71dp"
                    android:gravity="center"
                    android:text="@string/tvAgendaText"
-                   android:textColor="@color/red"
+                   android:textColor="@color/black"
                    android:textSize="17sp"
                    android:textStyle="italic" />
            </LinearLayout>
@@ -73,16 +111,11 @@
             android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:text="@string/tvWorkshops"
-            android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textColor="@color/blue"
+            android:textSize="27sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <ProgressBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/progress"
-            app:layout_constraintTop_toBottomOf="@id/tvWorkshops"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvWorkshopList"
@@ -97,4 +130,25 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMealButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/square" >
+
+        <Button
+            android:id="@+id/btnMealInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_10"
+            android:paddingVertical="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/btnMealInfo"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

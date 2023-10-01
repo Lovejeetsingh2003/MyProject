@@ -1,18 +1,15 @@
 package com.ChatterCampApplication.DataClass
 
 import androidx.room.ColumnInfo
-import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
-data class LoginDataClass(
-
+data class HomeData(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
 
     @ColumnInfo()
-    var Username : String ?= null,
+    var agenda : String ?= null,
 
     @ColumnInfo()
-    var Password : String ?= null
+    var day : String ?= null,
 )

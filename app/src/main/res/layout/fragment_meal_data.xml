@@ -1,0 +1,421 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.ChatterCampApplication.Fragment.MealDataFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvMealInfo"
+        android:text="@string/tvMealInfo"
+        android:textSize="40sp"
+        android:textColor="@color/blue"
+        android:fontFamily="sans-serif-black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/square"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMealInfo">
+
+        <Spinner
+            android:id="@+id/spinnerDay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/day"
+            android:padding="15dp"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintEnd_toStartOf="@id/btnShow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <Button
+            android:id="@+id/btnShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_10"
+            android:hint="@string/btnShow"
+            android:layout_marginEnd="4dp"
+            android:padding="8dp"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clBreakfast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/squareborder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clDay"
+        app:layout_constraintBottom_toTopOf="@id/clLunch">
+
+        <TextView
+            android:id="@+id/tvBreakfast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@string/tvBreakfast"
+            android:textColor="@color/blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginHorizontal="25dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBreakfast"/>
+
+        <LinearLayout
+            android:id="@+id/llVegBreakfast"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvBreakfast">
+
+            <ImageView
+                android:id="@+id/imgVegBreakfast"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/whole_wheat_toast" />
+
+            <ImageView
+                android:id="@+id/imgVegBreakfast2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="gone"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/peanut_butter_and_banana_sandwich" />
+            <ImageView
+                android:id="@+id/imgVegBreakfast3"
+                android:layout_width="60dp"
+                android:visibility="gone"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/greek" />
+
+            <TextView
+                android:id="@+id/tvBreakfastVeg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tvBreakfastVeg"
+                android:textColor="#0D7F00"
+                android:textSize="19sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llNonVegBreakfast"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llVegBreakfast">
+
+            <ImageView
+                android:id="@+id/imgNonVegBreakfast"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/chickensausage" />
+
+            <ImageView
+                android:id="@+id/imgNonVegBreakfast2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="gone"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/turkey_quesadilla" />
+            <ImageView
+                android:id="@+id/imgNonVegBreakfast3"
+                android:layout_width="60dp"
+                android:visibility="gone"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/salsa_and_sour" />
+
+            <TextView
+                android:id="@+id/tvNonVegBreakfast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tvNonVegBreakfast"
+                android:textColor="@color/red"
+                android:textSize="19sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLunch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/squareborder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clBreakfast"
+        app:layout_constraintBottom_toTopOf="@id/clDinner">
+
+        <TextView
+            android:id="@+id/tvLunch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@string/tvLunch"
+            android:textColor="@color/blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginHorizontal="25dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLunch"/>
+
+        <LinearLayout
+            android:id="@+id/llVegLunch"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLunch">
+
+            <ImageView
+                android:id="@+id/imgVegLunch"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/veggie_wrap" />
+            <ImageView
+                android:id="@+id/imgVegLunch2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="gone"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/cheesemacroni" />
+            <ImageView
+                android:id="@+id/imgVegLunch3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="gone"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/veggiequesadilla" />
+
+            <TextView
+                android:id="@+id/tvVegLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tvVegLunch"
+                android:textColor="#0D7F00"
+                android:textSize="19sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llNonVegLunch"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llVegLunch">
+
+            <ImageView
+                android:id="@+id/imgNonVegLunch"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/bbq" />
+
+            <ImageView
+                android:id="@+id/imgNonVegLunch2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="gone"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/tunasaladsandwich" />
+
+            <ImageView
+                android:id="@+id/imgNonVegLunch3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="gone"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/minimeatballsub" />
+            <TextView
+                android:id="@+id/tvNonVegLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tvNonVegLunch"
+                android:textColor="@color/red"
+                android:textSize="19sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clDinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/squareborder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clLunch"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tvDinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@string/tvDinner"
+            android:textColor="@color/blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginHorizontal="25dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDinner"/>
+
+        <LinearLayout
+            android:id="@+id/llVegDinner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDinner">
+
+            <ImageView
+                android:id="@+id/imgVegDinner"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/veggiestirfry" />
+
+            <ImageView
+                android:id="@+id/imgVegDinner2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="gone"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/pastashells" />
+
+            <ImageView
+                android:id="@+id/imgVegDinner3"
+                android:layout_width="60dp"
+                android:visibility="gone"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/veggiepiza" />
+
+            <TextView
+                android:id="@+id/tvVegDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tvVegDinner"
+                android:textColor="#0D7F00"
+                android:textSize="19sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llNonVegDinner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llVegDinner">
+
+            <ImageView
+                android:id="@+id/imgNonVegDinner"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/beeftacos" />
+
+            <ImageView
+                android:id="@+id/imgNonVegDinner2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:visibility="gone"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/grilledsalmon" />
+
+            <ImageView
+                android:id="@+id/imgNonVegDinner3"
+                android:visibility="gone"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/chickentender" />
+
+            <TextView
+                android:id="@+id/tvNonVegDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tvNonVegDinner"
+                android:textColor="@color/red"
+                android:textSize="19sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

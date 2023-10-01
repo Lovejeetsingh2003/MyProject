@@ -2,17 +2,20 @@ package com.ChatterCampApplication.Fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
-import com.ChatterCampApplication.DataClass.LoginDataClass
-import com.ChatterCampApplication.Models.LoginModel
+import android.widget.Toast
+import androidx.core.os.BuildCompat
+import androidx.fragment.app.Fragment
+import com.ChatterCampApplication.ChatterCampDb
+import com.ChatterCampApplication.DataClass.RegisterTrainerDataClass
 import com.ChatterCampApplication.activity.LoginActivity
 import com.ChatterCampApplication.activity.MainActivity
 import com.example.chattercampapplication.databinding.FragmentLoginBinding
+import pl.droidsonroids.gif.BuildConfig
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,16 +34,14 @@ class LoginFragment : Fragment() {
 
     var binding : FragmentLoginBinding ?= null
     var loginActivity: LoginActivity?= null
-    var loginDataClass= LoginDataClass()
-     lateinit var loginViewModel: LoginModel
+     var signInDataClass = RegisterTrainerDataClass()
+    lateinit var chatterCampDb : ChatterCampDb
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loginActivity = activity as LoginActivity
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        chatterCampDb=ChatterCampDb.getDataBaseRegisterTrainerDb(loginActivity!!)
     }
 
     @SuppressLint("ResourceType")
@@ -50,15 +51,16 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(layoutInflater)
+       // chatterCampDb = ChatterCampDb.getDataBaseRegisterTrainerDb(requireContext())
         return binding?.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        loginViewModel = ViewModelProvider(this)[LoginModel::class.java]
-
+       // if(BuildConfig.DEBUG){
+            binding?.etUsername?.setText("Admin")
+            binding?.etPassword?.setText("1234")
+        //}
         binding?.btnLogin?.setOnClickListener {
             if(binding?.etUsername?.text.toString().isEmpty())
             {
@@ -68,19 +70,57 @@ class LoginFragment : Fragment() {
             {
                 binding?.etPassword?.error = "Enter your Password"
             }
-            else{
-                loginDataClass.Username = binding?.etUsername?.text.toString()
-                loginDataClass.Password = binding?.etPassword?.text.toString()
-                loginViewModel.insertLoginData(loginDataClass)
+            else {
+                var username = binding?.etUsername?.text.toString()
+                var password = binding?.etPassword?.text.toString()
+                    if (username == "Admin" && password == "1234") {
+                        val intent = Intent(requireContext(), MainActivity::class.java)
+                        intent.putExtra("username",binding?.etUsername?.text?.toString())
+                        startActivity(intent)
+                        Toast.makeText(requireContext(), "Welcome", Toast.LENGTH_SHORT).show()
+                        binding?.etUsername?.text?.clear()
+                        binding?.etPassword?.text?.clear()
+                    } else  {
+                        class LoginClass :AsyncTask<Void,Void,Void>(){
+                            override fun onPreExecute() {
+                                super.onPreExecute()
+                                binding?.llProgress?.visibility = View.VISIBLE
+                            }
+                            override fun doInBackground(vararg p0: Void?): Void? {
+                                signInDataClass =
+                                    chatterCampDb.EventClickInterface().loginTrainer(username,password)?:RegisterTrainerDataClass()
+                                return null
+                            }
 
-                val intent = Intent(requireContext(), MainActivity::class.java)
-                startActivity(intent)
+                            override fun onPostExecute(result: Void?) {
+                                super.onPostExecute(result)
+                                binding?.llProgress?.visibility = View.GONE
+                                if(signInDataClass.id != 0){
+                                    val intent = Intent(requireContext(), MainActivity::class.java)
+                                    intent.putExtra("username",binding?.etUsername?.text?.toString())
+                                    startActivity(intent)
+                                    Toast.makeText(requireContext(), "Welcome", Toast.LENGTH_SHORT).show()
+                                    binding?.etUsername?.text?.clear()
+                                    binding?.etPassword?.text?.clear()
 
-                binding?.etUsername?.text?.clear()
-                binding?.etPassword?.text?.clear()
+                                }else{
+                                    Toast.makeText(
+                                        requireContext(),
+                                        "Username and Password are wrong",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                        }
+                        //apne yeh code hi nahi run kiya tha
+                        //isliye yeh null tha
+                        LoginClass().execute()
+
+                    }
             }
         }
     }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

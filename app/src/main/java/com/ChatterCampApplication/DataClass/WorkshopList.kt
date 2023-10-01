@@ -11,23 +11,22 @@ data class WorkshopList(
     var id: Int = 0,
 
     @ColumnInfo()
+    var day: String ?= null ,
+
+    @ColumnInfo()
     var name: String ?= null,
 
     @ColumnInfo()
     var subject: String ?= null,
 
     @ColumnInfo()
-    var start_Time : String ?= null,
+    var trainerName: String ?= null,
 
+    @ColumnInfo()
+    var start_Time : String ?= null,
 
     @ColumnInfo()
     var end_Time : String ?= null,
-
-    @ColumnInfo()
-    var start_Date : String ?= null,
-
-    @ColumnInfo()
-    var end_Date : String ?= null,
 
     @ColumnInfo()
     var description : String ?= null,

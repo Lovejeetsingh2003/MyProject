@@ -6,40 +6,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.ChatterCampApplication.Fragment.WorkshopFragment">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clTextHeader"
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/squareborder"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvWorkshopName"
-        android:textColor="@color/black"
-        android:text="@string/tvTittle"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/tlBar"
+        android:background="@color/blue_10"
+        tools:ignore="MissingConstraints"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="30sp"
-        android:fontFamily="sans-serif-black"
-        android:gravity="center" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/clEventDetail"
+            tools:ignore="NotSibling">
 
+            <TextView
+                android:id="@+id/tvWorkshopName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/tvWorkshopName"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toStartOf="@id/btnDelete"
+                app:layout_constraintHorizontal_bias="0.527"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/baseline_delete_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:padding="10dp"
-            app:layout_constraintTop_toBottomOf="@id/clTextHeader"
+            app:layout_constraintTop_toBottomOf="@id/tlBar"
             app:layout_constraintBottom_toBottomOf="parent">
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clEventDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/tvEvent"
-                    android:textColor="@color/black"
+                    android:textColor="@color/blue"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@color/black"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvEvent" />
@@ -134,6 +154,66 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llTrainerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:textColor="@color/black"
+                    android:paddingVertical="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llSubject">
+
+                    <TextView
+                        android:id="@+id/tvTrainerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/tvTrainerName2"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerTrainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="20dp"
+                        android:entries="@array/day"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:paddingVertical="10dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llTrainerName">
+
+                    <TextView
+                        android:id="@+id/tvDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/tvDay"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+
+                    <Spinner
+                        android:id="@+id/spinnerDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:entries="@array/day"
+                        android:layout_marginStart="20dp"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/llTimeHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -142,7 +222,7 @@
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/llSubject">
+                    app:layout_constraintTop_toBottomOf="@id/llDay">
 
                     <TextView
                         android:id="@+id/tvTiming"
@@ -203,80 +283,8 @@
                         app:layout_constraintStart_toEndOf="@id/tvTo"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <LinearLayout
-                    android:id="@+id/llDateHeader"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/llTiming">
-
-                    <TextView
-                        android:id="@+id/tvDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="@string/tvDate2"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
-                </LinearLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/llDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/llDateHeader">
-
-                    <TextView
-                        android:id="@+id/tvStartDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:text="@string/tvStartDate"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/tvToDate"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvToDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="@string/tvTo"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/tvEndDate"
-                        app:layout_constraintStart_toEndOf="@id/tvStartDate"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tvEndDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:text="@string/tvStartDate"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/tvToDate"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
-
-            <LinearLayout
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clDescription"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -284,9 +292,9 @@
                 android:background="@drawable/squareborder"
                 android:orientation="vertical"
                 android:padding="10dp"
-                app:layout_constraintBottom_toTopOf="@id/clProfessions"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/clProfessions"
                 app:layout_constraintTop_toBottomOf="@id/clEventDetail">
 
                 <TextView
@@ -295,7 +303,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/tvDescription"
-                    android:textColor="@color/black"
+                    android:textColor="@color/blue"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -306,35 +314,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
                     android:layout_marginHorizontal="25dp"
-                    android:background="@color/black"
+                    android:background="@color/blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvDescription" />
-
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    tools:ignore="NestedScrolling">
 
                     <LinearLayout
                         android:id="@+id/llDesc"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvDescription"
+                        app:layout_constraintBottom_toBottomOf="parent">
 
                         <EditText
                             android:id="@+id/etDesc"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:hint="@string/tvDesc"
+                            android:gravity="start"
                             android:textColor="@color/black"
                             android:textColorHint="@color/grey"
                             android:textSize="17sp" />
                     </LinearLayout>
-                </ScrollView>
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clProfessions"
@@ -352,7 +358,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -361,44 +367,27 @@
                         android:id="@+id/btnParticipantList"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:backgroundTint="@color/black"
+                        android:backgroundTint="@color/blue_10"
                         android:paddingVertical="10dp"
+                        android:layout_marginHorizontal="10dp"
                         android:text="@string/btnParticipantList"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
 
                     <Button
-                        android:id="@+id/btnTrainer"
-                        android:layout_width="130dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:backgroundTint="@color/black"
-                        android:paddingVertical="10dp"
-                        android:text="@string/btnTrainer"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/llSave"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <Button
                         android:id="@+id/btnSaveWorkshop"
                         android:layout_width="130dp"
+                        android:layout_marginHorizontal="10dp"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/black"
+                        android:backgroundTint="@color/blue_10"
                         android:paddingVertical="10dp"
                         android:text="@string/btnSaveWorkshop"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
+
                 </LinearLayout>
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

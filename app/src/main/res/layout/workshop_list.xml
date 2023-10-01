@@ -16,51 +16,111 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/llWorkshopDetails"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvWorkshopName"
             android:text="@string/tvWorkshopName"
             android:gravity="center"
-            android:layout_marginVertical="5dp"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tvWorkshopSubject"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:textSize="15sp"  />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background= "@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginHorizontal="25dp"
-            app:layout_constraintTop_toBottomOf="@id/tvWorkshopName"/>
-
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/leftBrkt"
+            android:text="@string/leftBrkt"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/tvWorkshopName"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvWorkshopSubject"
             android:text="@string/tvWorkshopSubject"
-            android:gravity="center"
-            android:layout_marginVertical="5dp"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvWorkshopName"
+            app:layout_constraintStart_toEndOf="@id/leftBrkt"
+            app:layout_constraintTop_toTopOf="parent"
             android:textSize="15sp"  />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rightBrkt"
+            android:text="@string/rightBrkt"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/tvWorkshopSubject"
+            app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background= "@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginHorizontal="25dp"
-            app:layout_constraintTop_toBottomOf="@id/tvWorkshopSubject"/>
+            app:layout_constraintTop_toBottomOf="@id/llWorkshopDetails"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/llTiming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llWorkshopDetails">
+
+            <TextView
+                android:id="@+id/tvStartTimeList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/tvStartTime"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvTo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/tvTo"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvEndTimeList"
+                app:layout_constraintStart_toEndOf="@id/tvStartTimeList"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvEndTimeList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/tvStartTime"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvTo"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

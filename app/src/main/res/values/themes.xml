@@ -3,6 +3,10 @@
     <style name="Base.Theme.ChatterCampApplication" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/blue_10</item>
+        <item name="colorAccent">@color/blue_10</item>
+        <item name="colorPrimaryDark">@color/blue_10</item>
+        <item name="colorOnPrimary">@color/black</item>
     </style>
 
     <style name="Theme.ChatterCampApplication" parent="Base.Theme.ChatterCampApplication" />
@@ -10,5 +14,8 @@
     <style name="circleImageView">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+    <style name="spinner">
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

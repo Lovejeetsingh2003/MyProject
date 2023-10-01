@@ -16,13 +16,42 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.ChatterCampApplication.Fragment.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
-    <fragment
         android:id="@+id/workshopFragment"
         android:name="com.ChatterCampApplication.Fragment.WorkshopFragment"
         android:label="fragment_workshop"
         tools:layout="@layout/fragment_workshop" />
+    <fragment
+        android:id="@+id/participantFragment"
+        android:name="com.ChatterCampApplication.Fragment.ParticipantFragment"
+        android:label="fragment_participant"
+        tools:layout="@layout/fragment_participant" />
+    <fragment
+        android:id="@+id/trainerFragment"
+        android:name="com.ChatterCampApplication.Fragment.TrainerFragment"
+        android:label="fragment_trainer"
+        tools:layout="@layout/fragment_trainer" />
+    <fragment
+        android:id="@+id/registerTrainerFragment"
+        android:name="com.ChatterCampApplication.Fragment.RegisterTrainerFragment"
+        android:label="fragment_register_participant"
+        tools:layout="@layout/fragment_register_participant" />
+    <fragment
+        android:id="@+id/registerParticipantFragment"
+        android:name="com.ChatterCampApplication.Fragment.RegisterParticipantFragment"
+        android:label="RegisterParticipantFragment" />
+    <fragment
+        android:id="@+id/addExistingParticipantFragment"
+        android:name="com.ChatterCampApplication.Fragment.AddExistingParticipantFragment"
+        android:label="fragment_add_existing_participant"
+        tools:layout="@layout/fragment_add_existing_participant" />
+    <fragment
+        android:id="@+id/mealDataFragment"
+        android:name="com.ChatterCampApplication.Fragment.MealDataFragment"
+        android:label="fragment_meal_data"
+        tools:layout="@layout/fragment_meal_data" />
+    <fragment
+        android:id="@+id/showParticipantFragment"
+        android:name="com.ChatterCampApplication.Fragment.ShowParticipantFragment"
+        android:label="fragment_show_participant"
+        tools:layout="@layout/fragment_show_participant" />
 </navigation>

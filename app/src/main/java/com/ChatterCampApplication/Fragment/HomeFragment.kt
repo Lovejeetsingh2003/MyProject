@@ -1,16 +1,19 @@
 package com.ChatterCampApplication.Fragment
 
+import android.app.AlertDialog
 import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ChatterCampApplication.Adapter.RecyclerViewWorkshop
 import com.ChatterCampApplication.ChatterCampDb
+import com.ChatterCampApplication.DataClass.HomeData
 import com.ChatterCampApplication.DataClass.WorkshopList
-import com.ChatterCampApplication.Interface.ClickInterface
+import com.ChatterCampApplication.Interface.ClickInterfaceHome
 import com.ChatterCampApplication.Models.WorkshopModel
 import com.ChatterCampApplication.activity.MainActivity
 import com.example.chattercampapplication.R
@@ -27,7 +30,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment(), ClickInterface {
+class HomeFragment : Fragment(), ClickInterfaceHome {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,8 +39,12 @@ class HomeFragment : Fragment(), ClickInterface {
     var mainActivity: MainActivity?= null
     lateinit var listAdapter : RecyclerViewWorkshop
     var workshopList = arrayListOf<WorkshopList>()
+    var shownWorkshopList = arrayListOf<WorkshopList>()
+    var homeDataBase = HomeData()
     lateinit var workshopDb : ChatterCampDb
-    lateinit var workshopModel: WorkshopModel
+    lateinit var navController: NavController
+    var dayList = ArrayList<String>()
+    var day : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,34 +61,56 @@ class HomeFragment : Fragment(), ClickInterface {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater)
-        listAdapter  = RecyclerViewWorkshop(workshopList,this)
+        dayList.addAll(requireContext().resources.getStringArray(R.array.day))
+        mainActivity?.binding?.btmBar?.visibility = View.VISIBLE
+        listAdapter  = RecyclerViewWorkshop(shownWorkshopList,this)
         binding?.rvWorkshopList?.layoutManager = LinearLayoutManager(mainActivity)
         binding?.rvWorkshopList?.adapter = listAdapter
         workshopDb = ChatterCampDb.getDataBaseWorkshopDb(requireContext())
-        getworkshopList()
+
+        getWorkshopList()
+        mainActivity?.let {
+            workshopDb.EventClickInterface().getWorkshopInfo().observe(it) {
+                workshopList.clear()
+                workshopList.addAll(it)
+                shownWorkshopList.clear()
+                shownWorkshopList.addAll(it)
+                listAdapter.notifyDataSetChanged()
+            }
+        }
         return binding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    fun getworkshopList(){
-        workshopList.clear()
-        listAdapter.notifyDataSetChanged()
-        class getWorkshopInfo : AsyncTask<Void, Void, Void>(){
-            override fun onPreExecute() {
-                super.onPreExecute()
-                binding?.progress?.visibility = View.VISIBLE
+        binding?.btnShow?.setOnClickListener {
+            var dayIndex = dayList.indexOfFirst { element-> element.equals(homeDataBase.day, true) }
+            binding?.spinnerDay?.setSelection(dayIndex, true)
+            day = binding?.spinnerDay?.selectedItem as String
+            if(day == "DAY 1"){
+                binding?.tvAgendaText?.text = "Camp Kickoff and Orientation\n"
+            }else if(day == "DAY 2")
+            {
+                binding?.tvAgendaText?.text = "Skill Development and Activities\n"
+            }else{
+                binding?.tvAgendaText?.text = "Camp Culmination and Celebration"
             }
-            override fun doInBackground(vararg params: Void?): Void? {
-                workshopList.addAll(workshopDb.EventClickInterface().getWorkshopInfo())
-                return null
-            }
-            override fun onPostExecute(result: Void?) {
-                super.onPostExecute(result)
-                binding?.progress?.visibility = View.GONE
-            }
+            getWorkshopList()
         }
-        getWorkshopInfo().execute()
+        binding?.btnMealInfo?.setOnClickListener {
+            mainActivity?.navController?.navigate(R.id.mealDataFragment)
+            mainActivity?.binding?.btmBar?.visibility = View.GONE
+        }
+
     }
+    private fun getWorkshopList(){
+        var filterDate = workshopList.filter { element-> element.day.equals(day, ignoreCase = true) }
+        shownWorkshopList.clear()
+        shownWorkshopList.addAll(filterDate as ArrayList<WorkshopList>)
+        listAdapter.notifyDataSetChanged()
+    }
+
 
     companion object {
         /**
@@ -109,6 +138,7 @@ class HomeFragment : Fragment(), ClickInterface {
             mainActivity?.navController?.navigate(R.id.workshopFragment,bundle)
     }
 }
+
 
 
 
